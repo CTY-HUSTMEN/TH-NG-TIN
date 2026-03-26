@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HUST MEN</title>
+
+<meta property="og:title" content="HUST MEN gửi món quà nho nhỏ tặng bạn đây">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tnct123.github.io/SHOPPE-HUST-MEN/">
+<meta property="og:image" content="https://tnct123.github.io/SHOPPE-HUST-MEN/logo.png">
+
+<link rel="icon" href="logo.png">
+
+<style>
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #ffcc99, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ===== BACKGROUND FLOAT ===== */
+.decor-item {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+}
+.decor-item img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+    object-fit: cover;
+    will-change: transform;
+    transform: translateZ(0);
+}
+.float-1 { animation: floatSmooth 8s ease-in-out infinite alternate; }
+.float-2 { animation: floatSmooth 9s ease-in-out infinite alternate; }
+.float-3 { animation: floatSmooth 10s ease-in-out infinite alternate; }
+
+@keyframes floatSmooth {
+    0% { transform: translate3d(0, 0px, 0); }
+    100% { transform: translate3d(0, -35px, 0); }
+}
+/* ============================ */
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 420px;
+    max-width: 90%;
+    z-index: 10;
+}
+
+.logo {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e68900;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="decor-item" style="top:0;left:0;width:200px;">
+    <img src="3.jpg" class="float-1">
+</div>
+<div class="decor-item" style="bottom:0;right:0;width:200px;">
+    <img src="4.jpg" class="float-2">
+</div>
+
+<!-- FORM -->
+<div class="container" id="mainBox">
+    <img src="logo.png" class="logo">
+    <div class="title">HUST MEN</div>
+
+    <p>Xin hãy nhập thông tin của bạn</p>
+
+    <form id="form">
+        <input type="text" id="name" placeholder="Họ và tên" required>
+        <input type="number" id="age" placeholder="Tuổi" required>
+        <input type="text" id="phone" placeholder="SĐT" required>
+
+        <button type="submit">Xác nhận</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let phone = document.getElementById("phone").value;
+
+    fetch("https://script.google.com/macros/s/AKfycbz13v70o9ZZvXG2C2JaTBNZY1y9ABXIU1sZ9RlMxhIsCbLoU6GRsAbaERIM7fO4RU0X/exec?name=" 
+        + encodeURIComponent(name)
+        + "&age=" + age
+        + "&phone=" + encodeURIComponent(phone),
+    {
+        method: "GET",
+        mode: "no-cors"
+    });
+
+    alert("Đã nhận thông tin!");
+
+    setTimeout(()=>{
+        // thử đóng tab
+        window.close();
+
+        // fallback nếu không đóng được
+        document.body.innerHTML = `
+            <div style="text-align:center;margin-top:100px;font-size:20px;">
+                Đã nhận thông tin<br><br>
+                Bạn có thể đóng trang này
+            </div>
+        `;
+    },1000);
+});
+</script>
+
+</body>
+</html>
