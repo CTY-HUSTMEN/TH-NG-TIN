@@ -196,12 +196,15 @@ document.getElementById("form").addEventListener("submit", function(e){
         window.close();
 
         // fallback nếu không đóng được
-        document.body.innerHTML = `
-            <div style="text-align:center;margin-top:100px;font-size:20px;">
-                Đã nhận thông tin<br><br>
-                Bạn có thể đóng trang này
-            </div>
-        `;
+       document.getElementById("mainBox").innerHTML = `
+    <img src="logo.png" class="logo">
+    <div class="title">HUST MEN</div>
+
+    <div style="margin-top:20px;font-size:18px;color:#444;">
+        ✅ Đã nhận thông tin<br><br>
+        Bạn có thể đóng trang này
+    </div>
+`;
     },1000);
 });
 </script>
