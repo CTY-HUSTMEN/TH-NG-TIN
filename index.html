@@ -18,13 +18,20 @@
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(135deg, #ffcc99, #ffffff);
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    min-height: 100vh;   /* ✅ thay vì height */
     margin: 0;
-    overflow: hidden;
+
+    overflow-x: hidden;  /* ✅ chỉ chặn ngang, cho phép scroll dọc */
     position: relative;
+}
+
+    body {
+    min-height: 100dvh; /* ✅ chuẩn mới cho mobile */
 }
 /* 1111111111111111111111111111111111111111111111111111111 */
 body {
@@ -40,6 +47,13 @@ body {
 /* ===== BACKGROUND FLOAT ===== */
 .decor-item {
     position: absolute;
+
+    
+    max-width: 40vw;   /* giới hạn theo màn hình */
+
+
+
+    
     z-index: 2; 
     pointer-events: none; 
 }
