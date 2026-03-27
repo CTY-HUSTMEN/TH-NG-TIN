@@ -115,6 +115,23 @@ button {
     cursor: pointer;
 }
 
+textarea {
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+/* fix mobile không bị zoom + tràn */
+input, textarea {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+    
 button:hover {
     background: #e68900;
 }
