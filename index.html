@@ -166,7 +166,8 @@ button:hover {
     <form id="form">
         <input type="text" id="name" placeholder="Họ và tên" required>
         <input type="number" id="age" placeholder="Tuổi" required>
-        <input type="text" id="phone" placeholder="SĐT" required>
+        <input type="number" id="phone" placeholder="SĐT" required>
+        <input type="text" id="problem" placeholder="Vấn đề mà bạn đang gặp phải" required>
 
         <button type="submit">Xác nhận</button>
     </form>
@@ -179,33 +180,29 @@ document.getElementById("form").addEventListener("submit", function(e){
     let name = document.getElementById("name").value;
     let age = document.getElementById("age").value;
     let phone = document.getElementById("phone").value;
+    let problem = document.getElementById("problem").value;
 
-    fetch("https://script.google.com/macros/s/AKfycbz13v70o9ZZvXG2C2JaTBNZY1y9ABXIU1sZ9RlMxhIsCbLoU6GRsAbaERIM7fO4RU0X/exec?name=" 
+    fetch("https://script.google.com/macros/s/AKfycbyOYi4ezL_FfsJx8xTkF-j_A-2l2yNzYx-FUbpXlmwRHSvsZyBiNBYL1w1B2mks6mU/exec?name=" 
         + encodeURIComponent(name)
         + "&age=" + age
-        + "&phone=" + encodeURIComponent(phone),
+        + "&phone=" + encodeURIComponent(phone)
+        + "&problem=" + encodeURIComponent(problem),
     {
         method: "GET",
         mode: "no-cors"
     });
 
-    alert("Đã nhận thông tin!");
-
-    setTimeout(()=>{
-        // thử đóng tab
-        window.close();
-
-        // fallback nếu không đóng được
-       document.getElementById("mainBox").innerHTML = `
+    // KHÔNG tắt tab nữa
+    // Hiển thị thông báo luôn
+    document.getElementById("mainBox").innerHTML = `
         <img src="logo.png" class="logo">
         <div class="title">HUST MEN</div>
-    
+
         <div style="margin-top:20px;font-size:18px;color:#444;">
-        Đã nhận thông tin<br><br>
-        Bạn có thể đóng trang này
-    </div>
-`;
-    },1000);
+            Cảm ơn bạn đã tham gia cùng HUSTMEN<br><br>
+            Bạn có thể đóng trang này
+        </div>
+    `;
 });
 </script>
 
