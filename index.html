@@ -2,8 +2,6 @@
 <html lang="vi">
 <head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,18 +26,18 @@ body {
     min-height: 100vh;
     margin: 0;
 
-    width: 100%;
+    overflow-x: hidden;
     max-width: 100%;
-    overflow-x: hidden;  
+    overflow-x: hidden;
+    
 }
+
 
 /* ===== BACKGROUND FLOAT ===== */
 .decor-item {
     position: absolute;
     z-index: 2; 
     pointer-events: none; 
-    max-width: 40vw;
-    overflow: hidden;
 }
 
 .decor-item img {
@@ -102,7 +100,7 @@ body {
     text-align: center;
 
     width: 100%;
-    max-width: 100px;
+    max-width: 400px;
 
     z-index: 10;
 }
@@ -222,7 +220,7 @@ input, textarea {
         <input type="number" id="age" placeholder="Tuổi" required>
         <input type="number" id="phone" placeholder="SĐT" required>
         <select id="problem" required>
-            <option value=""> Chọn vấn đề mà bạn đang gặp phải </option>
+            <option value="">-- Chọn vấn đề mà bạn đang gặp phải --</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
