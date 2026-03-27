@@ -18,14 +18,17 @@
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(135deg, #ffcc99, #ffffff);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    min-height: 100vh;
     margin: 0;
-    overflow: hidden;
-    position: relative;
+
+    overflow-x: hidden;
 }
+
 
 /* ===== BACKGROUND FLOAT ===== */
 .decor-item {
@@ -75,7 +78,18 @@ body {
 }
 /* ========================================= */
 
-.container {
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px; /* tránh dính mép trên mobile */
+    box-sizing: border-box;
+}
+        .container {
     background: white;
     padding: 40px;
     border-radius: 15px;
@@ -85,7 +99,6 @@ body {
     max-width: 90%;
     z-index: 10;
 }
-
 .logo {
     width: 200px;
     margin-bottom: 20px;
@@ -118,6 +131,15 @@ button {
 button:hover {
     background: #e68900;
 }
+
+select {
+    width: 95.5%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
 </style>
 
 </head>
@@ -167,9 +189,18 @@ button:hover {
         <input type="text" id="name" placeholder="Họ và tên" required>
         <input type="number" id="age" placeholder="Tuổi" required>
         <input type="number" id="phone" placeholder="SĐT" required>
-        <input type="text" id="problem" placeholder="Vấn đề mà bạn đang gặp phải" required>
+        <select id="problem" required>
+            <option value="">-- Chọn vấn đề mà bạn đang gặp phải --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="mắc ỉa">mắc ỉa</option>
+            <option value="Khác">Khác</option>
+        </select>
+        
 
-        <button type="submit">Xác nhận</button>
+        <button type="submit">Hoàn thành</button>
     </form>
 </div>
 
@@ -192,8 +223,6 @@ document.getElementById("form").addEventListener("submit", function(e){
         mode: "no-cors"
     });
 
-    // KHÔNG tắt tab nữa
-    // Hiển thị thông báo luôn
     document.getElementById("mainBox").innerHTML = `
         <img src="logo.png" class="logo">
         <div class="title">HUST MEN</div>
