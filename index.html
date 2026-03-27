@@ -3,9 +3,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>HUST MEN</title>
+<title>HUST MEN - Tham gia ngay</title>
 
 <meta property="og:title" content="THÔNG TIN">
 <meta property="og:type" content="website">
@@ -15,45 +15,139 @@
 <link rel="icon" href="logo.png">
 
 <style>
-body {
+/* CSS Reset and Mobile-First Principles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden; /* Prevent horizontal overflow */
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(135deg, #ffcc99, #ffffff);
+}
 
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    min-height: 100dvh;
-    margin: 0;
-
-    overflow-x: hidden;
-    max-width: 100%;
-    overflow-x: hidden;
-    
+    position: relative; /* Context for background decor */
 }
 
+/* Wrapper to contain the form card and ensure vertical centering */
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10;
+}
 
-/* ===== BACKGROUND FLOAT ===== */
+/* The central form card */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 95%; /* Responsive width */
+    max-width: 400px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    z-index: 20;
+}
+
+.logo {
+    width: 200px;
+    margin-bottom: 15px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff9800;
+    margin-bottom: 10px;
+}
+
+p.instruction {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form inputs and select - consistent width and styling */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 16px; /* 16px to prevent auto-zoom on iOS */
+    font-family: inherit;
+    color: #333;
+}
+
+input::placeholder, select::placeholder {
+    color: #999;
+}
+
+/* Dropdown styling */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23999' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 20px;
+    cursor: pointer;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 15px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #e68900;
+}
+
+/* =========================================
+   DECORATION ELEMENTS (Kích thước đã được làm to lên)
+   ========================================= */
+
 .decor-item {
     position: absolute;
-    z-index: 2; 
-    pointer-events: none; 
+    pointer-events: none;
+    z-index: 1; /* Below the card */
+    will-change: transform;
+    opacity: 0.8;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
 }
 
 .decor-item img {
     width: 100%;
-    border-radius: 24px; 
-    box-shadow: 0 20px 45px rgba(0,0,0,0.25); 
+    border-radius: 20%;
     object-fit: cover;
-    
-    /* CÁC THUỘC TÍNH ÉP TRÌNH DUYỆT DÙNG GPU ĐỂ RENDER MƯỢT MÀ */
-    will-change: transform;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0); 
 }
 
-/* Các nhịp độ và thời gian bay lơ lửng khác nhau để tạo sự tự nhiên */
+/* Common float animation */
+@keyframes floatSmooth {
+    0% { transform: translate3d(0, 0px, 0) rotate(0deg); }
+    100% { transform: translate3d(0, -30px, 0) rotate(5deg); }
+}
+
 .float-1 { animation: floatSmooth 8s ease-in-out infinite alternate; animation-delay: 0.5s; }
 .float-2 { animation: floatSmooth 9.5s ease-in-out infinite alternate; animation-delay: 1.8s; }
 .float-3 { animation: floatSmooth 11s ease-in-out infinite alternate; animation-delay: 3.2s; }
@@ -61,113 +155,43 @@ body {
 .float-5 { animation: floatSmooth 9s ease-in-out infinite alternate; animation-delay: 4.5s; }
 .float-6 { animation: floatSmooth 8.5s ease-in-out infinite alternate; animation-delay: 2.5s; }
 
-/* Dùng translate3d thay vì translateY để kích hoạt phần cứng */
-@keyframes floatSmooth {
-    0% { transform: translate3d(0, 0px, 0) rotate(0deg); }
-    100% { transform: translate3d(0, -35px, 0) rotate(8deg); }
-}
+/* Blur levels */
+.blur-sm { filter: blur(3px) opacity(0.8); }
+.blur-md { filter: blur(6px) opacity(0.6); }
 
-/* Hiệu ứng chiều sâu (blur) cho các vật thể ở xa */
-.blur-sm img { 
-    filter: blur(3px); 
-    opacity: 0.8; 
-}
-.blur-md img { 
-    filter: blur(6px); 
-    opacity: 0.5; 
-}
-.blur-sm, .blur-md {
-    z-index: 1; /* Nằm dưới lớp sản phẩm nét */
-}
-/* ========================================= */
+/* Repositioned Specific Items for Mobile/Desktop Harmony */
+/* Item 3 (Products Top-Left) */
+.item-3 { top: 5%; left: 5%; width: 220px; transform: rotate(-10deg); }
+/* Item 4 (Products Bottom-Right) */
+.item-4 { bottom: 5%; right: 5%; width: 240px; transform: rotate(15deg); }
+/* Item 5 (Product Bottom-Left) */
+.item-5 { bottom: 15%; left: 8%; width: 210px; transform: rotate(10deg); }
+/* Item 6 (Product Top-Right) */
+.item-6 { top: 10%; right: 8%; width: 200px; transform: rotate(-15deg); }
 
-.wrapper {
-    width: 100%;
-    min-height: 100dvh;
+/* Ingredient Items (Blurred) */
+/* Pineapple (blur-sm, float-4) */
+.item-pineapple { top: 35%; left: 15%; width: 150px; transform: rotate(20deg); }
+/* Rose (blur-md, float-6) */
+.item-rose { top: 15%; left: 35%; width: 120px; transform: rotate(-25deg); }
+/* Jasmine (blur-sm, float-2) */
+.item-jasmine { bottom: 25%; right: 15%; width: 140px; transform: rotate(-10deg); }
+/* Cinnamon (blur-md, float-5) */
+.item-cinnamon { top: 45%; right: 12%; width: 160px; transform: rotate(30deg); }
+/* Coffee Bean (blur-md, float-1) */
+.item-coffee { bottom: 8%; left: 30%; width: 110px; transform: rotate(-20deg); }
+/* Orange (blur-sm, float-3) */
+.item-orange { top: 1%; right: 35%; width: 140px; transform: rotate(8deg); }
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 15px;
-    box-sizing: border-box;
-}
-.container {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    /*box-shadow: none;*/
-    text-align: center;
-
-    width: 100%;
-    max-width: 400px;
-
-    z-index: 10;
-}
-.logo {
-    width: 200px;
-    margin-bottom: 20px;
-}
-
-.title {
-    font-size: 26px;
-    font-weight: bold;
-    color: #ff9800;
-}
-
-input {
-    width: 90%;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-button {
-    margin-top: 15px;
-    padding: 12px;
-    background: #ff9800;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #e68900;
-}
-
-select {
-    width: 90%;
-    padding: 10px;
-    margin-top: 10px;
-
-    border-radius: 8px;
-    border: 1px solid #ccc;
-
-    font-size: 14px;
-    font-family: inherit;
-    color: #555;
-
-    background-color: #fff;
-
-    /* Xóa style mặc định của iOS */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    /* Custom icon dropdown */
-    background-image: url("data:image/svg+xml;utf8,<svg fill='%23999' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 18px;
-
-    cursor: pointer;
-}
-
-input, textarea {
-    font-size: 16px;
-    box-sizing: border-box;
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+    .decor-item {
+        opacity: 0.6; /* Soften decor on very small screens */
+    }
+    .item-3 { width: 150px; }
+    .item-4 { width: 160px; }
+    .item-pineapple { left: 10%; width: 120px; }
+    .item-cinnamon { right: 8%; width: 130px; }
 }
 
 </style>
@@ -176,62 +200,61 @@ input, textarea {
 
 <body>
 
-<div class="decor-item" style="top: -5%; left: -5%; width: 280px; transform: rotate(-15deg);">
-    <img src="3.jpg" alt="Sản phẩm 3" class="float-1">
+<div class="decor-item item-3 float-1">
+    <img src="3.jpg" alt="Sản phẩm 3">
 </div>
-<div class="decor-item" style="bottom: -8%; right: -5%; width: 300px; transform: rotate(20deg);">
-    <img src="4.jpg" alt="Sản phẩm 4" class="float-3">
+<div class="decor-item item-4 float-3">
+    <img src="4.jpg" alt="Sản phẩm 4">
 </div>
-<div class="decor-item" style="bottom: 15%; left: -6%; width: 240px; transform: rotate(12deg);">
-    <img src="5.jpg" alt="Sản phẩm 5" class="float-5">
+<div class="decor-item item-5 float-5">
+    <img src="5.jpg" alt="Sản phẩm 5">
 </div>
-<div class="decor-item" style="top: 10%; right: -6%; width: 250px; transform: rotate(-20deg);">
-    <img src="6.jpg" alt="Sản phẩm 6" class="float-2">
-</div>
-
-<div class="decor-item blur-sm" style="top: 35%; left: 8%; width: 180px; transform: rotate(25deg);">
-    <img src="7.jpg" alt="Dứa" class="float-4">
-</div>
-<div class="decor-item blur-md" style="top: 15%; left: 30%; width: 140px; transform: rotate(-30deg);">
-    <img src="8.jpg" alt="Hoa hồng" class="float-6">
-</div>
-<div class="decor-item blur-sm" style="bottom: 25%; right: 12%; width: 160px; transform: rotate(-15deg);">
-    <img src="9.jpg" alt="Hoa nhài" class="float-2">
-</div>
-<div class="decor-item blur-md" style="top: 45%; right: 6%; width: 190px; transform: rotate(35deg);">
-    <img src="10.jpg" alt="Quế" class="float-5">
-</div>
-<div class="decor-item blur-md" style="bottom: 8%; left: 32%; width: 130px; transform: rotate(-25deg);">
-    <img src="11.png" alt="Hạt cà phê" class="float-1">
-</div>
-<div class="decor-item blur-sm" style="top: -2%; right: 35%; width: 170px; transform: rotate(10deg);">
-    <img src="12.jpg" alt="Cam" class="float-3">
+<div class="decor-item item-6 float-2">
+    <img src="6.jpg" alt="Sản phẩm 6">
 </div>
 
-<!-- FORM -->
-<div class="container" id="mainBox">
-    <img src="logo.png" class="logo">
-    <div class="title">HUST MEN</div>
+<div class="decor-item blur-sm item-pineapple float-4">
+    <img src="7.jpg" alt="Dứa">
+</div>
+<div class="decor-item blur-md item-rose float-6">
+    <img src="8.jpg" alt="Hoa hồng">
+</div>
+<div class="decor-item blur-sm item-jasmine float-2">
+    <img src="9.jpg" alt="Hoa nhài">
+</div>
+<div class="decor-item blur-md item-cinnamon float-5">
+    <img src="10.jpg" alt="Quế">
+</div>
+<div class="decor-item blur-md item-coffee float-1">
+    <img src="11.png" alt="Hạt cà phê">
+</div>
+<div class="decor-item blur-sm item-orange float-3">
+    <img src="12.jpg" alt="Cam">
+</div>
 
-    <p>Xin hãy nhập thông tin của bạn</p>
+<div class="wrapper">
+    <div class="container" id="mainBox">
+        <img src="logo.png" class="logo" alt="HUST MEN Logo">
+        <div class="title">HUST MEN</div>
 
-    <form id="form">
-        <input type="text" id="name" placeholder="Họ và tên" required>
-        <input type="number" id="age" placeholder="Tuổi" required>
-        <input type="number" id="phone" placeholder="SĐT" required>
-        <select id="problem" required>
-            <option value="">Chọn vấn đề mà bạn đang gặp phải</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="mắc ỉa">mắc ỉa</option>
-            <option value="Khác">Khác</option>
-        </select>
-        
+        <p class="instruction">Xin hãy nhập thông tin của bạn</p>
 
-        <button type="submit">Hoàn thành</button>
-    </form>
+        <form id="form">
+            <input type="text" id="name" placeholder="Họ và tên" required>
+            <input type="number" id="age" placeholder="Tuổi" required>
+            <input type="number" id="phone" placeholder="SĐT" required>
+            <select id="problem" required>
+                <option value="" disabled selected>Chọn vấn đề mà bạn đang gặp phải</option>
+                <option value="1">Vấn đề 1</option>
+                <option value="2">Vấn đề 2</option>
+                <option value="3">Vấn đề 3</option>
+                <option value="4">Vấn đề 4</option>
+                <option value="Khác">Vấn đề khác</option>
+            </select>
+            
+            <button type="submit">Hoàn thành</button>
+        </form>
+    </div>
 </div>
 
 <script>
