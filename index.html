@@ -89,8 +89,9 @@ input, select {
     color: #333;
 }
 
-input::placeholder, select::placeholder {
-    color: #999;
+textarea {
+    min-height: 100px;
+    resize: none;
 }
 
 /* Dropdown styling */
@@ -243,9 +244,9 @@ button:hover {
             <input type="text" id="name" placeholder="Họ và tên" required>
             <input type="number" id="age" placeholder="Tuổi" required>
             <input type="number" id="phone" placeholder="SĐT" required>
-            <input type="text" id="problem" placeholder="Nghề nghiệp của bạn" required>
+            <input type="text" id="problem" placeholder="Vấn đề" required>
             
-            <button type="submit">Bước tiếp theo</button>
+            <button type="submit">Hoàn thành</button>
         </form>
     </div>
 </div>
@@ -271,12 +272,9 @@ document.getElementById("form").addEventListener("submit", function(e){
 
 setTimeout(() => {
     window.location.href = "https://vn.shp.ee/TuGyf3Ro";
-}, 500); // delay 0.5s 
-
+}, 500); // delay 0.5s
 });
 </script>
-
-
 
 </body>
 </html>
