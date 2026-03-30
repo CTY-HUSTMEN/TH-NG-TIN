@@ -243,16 +243,9 @@ button:hover {
             <input type="text" id="name" placeholder="Họ và tên" required>
             <input type="number" id="age" placeholder="Tuổi" required>
             <input type="number" id="phone" placeholder="SĐT" required>
-            <select id="problem" required>
-                <option value="" disabled selected>Chọn vấn đề mà bạn đang gặp phải</option>
-                <option value="1">Vấn đề 1</option>
-                <option value="2">Vấn đề 2</option>
-                <option value="3">Vấn đề 3</option>
-                <option value="4">Vấn đề 4</option>
-                <option value="Khác">Vấn đề khác</option>
-            </select>
+            <input type="text" id="problem" placeholder="Nghề nghiệp của bạn" required>
             
-            <button type="submit">Hoàn thành</button>
+            <button type="submit">Bước tiếp theo</button>
         </form>
     </div>
 </div>
@@ -278,9 +271,12 @@ document.getElementById("form").addEventListener("submit", function(e){
 
 setTimeout(() => {
     window.location.href = "https://vn.shp.ee/TuGyf3Ro";
-}, 500); // delay 0.5s
+}, 500); // delay 0.5s 
+
 });
 </script>
+
+
 
 </body>
 </html>
