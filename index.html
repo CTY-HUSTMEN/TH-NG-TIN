@@ -27,7 +27,7 @@ html, body {
     min-height: 100dvh;
     overflow-x: hidden; /* Prevent horizontal overflow */
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #fff5e6, #ffffff);
+    background: linear-gradient(135deg, #ffcc99, #ffffff);
 }
 
 body {
@@ -244,7 +244,7 @@ button:hover {
             <input type="number" id="age" placeholder="Tuổi" required>
             <input type="number" id="phone" placeholder="SĐT" required>
             <select id="problem" required>
-                <option value="" disabled selected>Công việc của bạn</option>
+                <option value="" disabled selected>Chọn vấn đề mà bạn đang gặp phải</option>
                 <option value="1">Vấn đề 1</option>
                 <option value="2">Vấn đề 2</option>
                 <option value="3">Vấn đề 3</option>
@@ -252,7 +252,7 @@ button:hover {
                 <option value="Khác">Vấn đề khác</option>
             </select>
             
-            <button type="submit">Bước tiếp theo</button>
+            <button type="submit">Hoàn thành</button>
         </form>
     </div>
 </div>
@@ -276,10 +276,9 @@ document.getElementById("form").addEventListener("submit", function(e){
         mode: "no-cors"
     });
 
-setTimeout(()=>{
-        window.location.href = "loading.html?name=" + encodeURIComponent(name) 
-            + "&phone=" + encodeURIComponent(phone);
-    }, 500);
+setTimeout(() => {
+    window.location.href = "https://vn.shp.ee/TuGyf3Ro";
+}, 500); // delay 0.5s
 });
 </script>
 
